@@ -43,6 +43,14 @@ public class APE4_Grafos {
         public void agregarNodo(String id, String nombre) {
 
             // COMPLETE AQUÍ
+            // Crear el nodo con su id y nombre
+            Nodo nodo = new Nodo(id, nombre);
+ 
+            // Registrar el nodo en el mapa de nodos
+            nodos.put(id, nodo);
+ 
+            // Inicializar su lista de adyacencia vacía
+            adyacencia.put(id, new ArrayList<>());
 
 
         }
