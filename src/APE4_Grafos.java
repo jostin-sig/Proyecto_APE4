@@ -153,13 +153,13 @@ public class APE4_Grafos {
         // Ruta con menor distancia
         // ═══════════════════════════════════
         public List<String> dijkstra(String inicio, String fin) {
-
+            // Mapa de distancias mínimas conocidas desde inicio
             Map<String, Integer> distancias =
                     new HashMap<>();
-
+             // Mapa para reconstruir el camino: guarda el nodo anterior
             Map<String, String> anteriores =
                     new HashMap<>();
-
+            // Cola de prioridad: procesa primero el nodo con menor distancia
             PriorityQueue<String> cola =
                     new PriorityQueue<>(
                             Comparator.comparingInt(
@@ -172,44 +172,55 @@ public class APE4_Grafos {
 
                 // TODO:
                 // Inicializar distancia infinita
+                distancias.put(nodo, Integer.MAX_VALUE);
 
 
             }
 
             // TODO:
             // Distancia del inicio = 0
+            distancias.put(inicio, 0);
 
 
             // TODO:
             // Agregar inicio a la cola
+            cola.add(inicio);
 
 
             while (!cola.isEmpty()) {
 
                 // TODO:
                 // Obtener nodo con menor distancia
+                String actual = cola.poll();
+
+                //if (actual.equals(fin)) break;
 
 
                 for (Arista arista : adyacencia.get(actual)) {
 
                     // TODO:
                     // Calcular nueva distancia
-
+                    int nuevaDistancia = distancias.get(actual) + arista.peso;
+                    
 
                     // TODO:
                     // Verificar si nuevaDistancia es menor
+                    if (nuevaDistancia < distancias.get(arista.destino)) {
 
 
                         // TODO:
                         // Actualizar distancia
+                        distancias.put(arista.destino, nuevaDistancia);
 
 
                         // TODO:
                         // Guardar nodo anterior
+                        anteriores.put(arista.destino, actual);
 
 
                         // TODO:
                         // Agregar vecino a la cola
+                        cola.add(arista.destino);
 
                     }
                 }
