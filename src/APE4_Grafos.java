@@ -173,8 +173,6 @@ public class APE4_Grafos {
                 // TODO:
                 // Inicializar distancia infinita
                 distancias.put(nodo, Integer.MAX_VALUE);
-
-
             }
 
             // TODO:
